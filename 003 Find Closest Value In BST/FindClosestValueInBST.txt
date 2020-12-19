@@ -1,0 +1,23 @@
+Find the closest value to a given target in a binary search tree. 
+
+
+Example what is the closest value to 12 in the bst bellow? answer 13.
+
+Target: 12
+
+       10
+     /    \
+    5     15
+  /  \   /  \
+ 2    5 13  22
+
+To get here we have to travel down the binary search tree checking the vlues of the node through navigation the given path. 
+
+1.As long as the current node does not eqaul null we will keep checking for nodes
+
+2. assign the closest value to the target. check each node to see if there is less differnece between target - closest verses target - current value. 
+
+
+3. depending on if the currentvalue is greater or lesser than the target check the left or right node. 
+
+Time/Space complextity is o(log(n)) best case because each node we check takes half or more values away. O(n) in a worst case if the nodes go all left or all right much like a typical list would. 
