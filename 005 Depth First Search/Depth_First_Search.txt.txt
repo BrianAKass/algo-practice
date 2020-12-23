@@ -1,0 +1,16 @@
+You are given a Node class that has an array of optional children nodes. When put together they should form a tree like structure. 
+
+Based on the tree input the output will fill an empty array with the tree nodes left to right going depth first.
+
+example
+
+Tree
+    A
+   /|\
+  B C D
+ /\   /\
+E  F G  H
+   /\ \
+  I  J K
+
+Output: ["A","B","E","F","I","J","C","D","G","K","H"]
