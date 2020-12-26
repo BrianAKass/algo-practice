@@ -1,0 +1,3 @@
+The classic coding question every job interview demands. 
+
+first sequence is 0, then 1. The Nth number is is the sum of (n-1)+(n-2) Have this one memorized. and the key thing to remember to say is to MEMOIZE (not memeorize) the function. Meaning we are using a form of caching to any aruguemnts when it's going through the recursive function. 
