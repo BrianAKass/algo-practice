@@ -1,0 +1,9 @@
+Write a function that takes a sorted array as well as a target interger. The function will use Binary search algorithm to determine if the target is in the array and return its index. If it doesn't the function will return -1.
+
+Example:
+
+INPUT:
+Array = [0, 1, 21, 33, 45, 45, 61, 71, 72, 73]
+Target = 33
+
+OUTPUT: 3
