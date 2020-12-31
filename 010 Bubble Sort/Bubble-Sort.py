@@ -11,15 +11,6 @@ def bubbleSort(array):
 				swap(i, i + 1, array)
 				isSorted = False
 		counter += 1
-
-
-# method 2
-
-def bubbleSort(array):
-    for x in range(0,len(array)):
-		for y in range(0,len(array)-x-1):
-			if array[y] > array[y+1]:
-				temp = array[y+1]
-				array[y+1] = array[y]
-				array[y] = temp
 	return array
+def swap(x,y,arr):
+	arr[x], arr[y] = arr[y], arr[x]
