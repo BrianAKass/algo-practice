@@ -1,0 +1,6 @@
+Write a function that takes an array of interger and returns a sorted version of the array. Use Bubble Sort because screw you we need to make this hard to justify you getting the job at the company you're applying for. 
+
+
+What is bubble sort? where you're incrementally swapping the numbers next to one another 
+
+example: [8,5,2] -> [5,8,2] -> [5,2,8] -> [2,5,8] 
