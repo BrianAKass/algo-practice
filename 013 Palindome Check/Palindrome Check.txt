@@ -1,0 +1,1 @@
+Check for palindrome in a string. Example "abba"
