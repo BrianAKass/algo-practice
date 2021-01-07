@@ -1,0 +1,7 @@
+Write a function that takes an empty string and returns its run-length encoding.
+
+Example:
+String: "AAAAAAAAAAAABBCCCCDD"
+Returns: 9A4A2B4C2D 
+
+Notice max number is 9 beacuse this can lead to edge case confusions. 12 could be misunderstood for only one 2. Son instead 9A followed by 4A.
