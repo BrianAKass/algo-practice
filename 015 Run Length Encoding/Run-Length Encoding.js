@@ -1,20 +1,20 @@
-# O(n) Time and Space
+// O(n) Time and Space
 
-def runLengthEncoding(string):
-	encodedStringCharacters = []
-	currentRunLength = 1 
-	for i in range(1, len(string)):
-		currentCharacter = string[i]
-		previousCharacter = string[i-1]
-
-		if currentCharacter != previousCharacter or currentRunLength == 9:
-			encodedStringCharacters.append(str(currentRunLength))
-			encodedStringCharacters.append(previousCharacter)
-			currentRunLength = 0
-
-		currentRunLength += 1
-
-	encodedStringCharacters.append(str(currentRunLength))
-	encodedStringCharacters.append(string[len(string) - 1])
-
-	return "".join(encodedStringCharacters)
+function runLengthEncoding(string) {
+  const encodedStringCharacters = []
+	let currentRunLength = 1;
+	for (let i = 1; i < string.length; i++) {
+		const currentCharacter = string[i];
+		const previousCharacter = string[i - 1];
+		
+		if (currentCharacter !== previousCharacter || currentRunLength === 9) {
+			encodedStringCharacters.push(currentRunLength.toString());
+			encodedStringCharacters.push(previousCharacter)
+			currentRunLength = 0;
+		}
+		currentRunLength++;
+	}
+	encodedStringCharacters.push(currentRunLength.toString());
+	encodedStringCharacters.push(string[string.length-1]);
+	return encodedStringCharacters.join("")			
+}
