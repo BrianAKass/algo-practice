@@ -1,0 +1,7 @@
+given a string and key have the string return the adjusted string output based on the its proceding alphabetical letters
+
+example:
+String : "xyz"
+key: 2
+
+output: "zab"
