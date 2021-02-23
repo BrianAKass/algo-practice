@@ -1,0 +1,8 @@
+Write a function that takes two non empty arrays of intergers, finds the pair of numbers whose absolute difference is closest to 0, returning an array containing those two numbers. Number in first array is in first position.
+
+EXAMPLE:
+
+arr1 = [-1, 5, 10, 20, 28, 3]
+arr2 = [26, 134, 135, 15, 17]
+
+sample output [28, 26]
