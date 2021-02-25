@@ -1,0 +1,1 @@
+Write a function that takes in an array of intergers and returns a boolean representing whether an array is monotonic. This just means the intergers in an array are either all non-increasing or non-decreasing.
