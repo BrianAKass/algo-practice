@@ -1,0 +1,98 @@
+regex use special code to detect patterns in strings of text. ctlf+f on cheat codes basically.
+
+example
+
+find the word just type the word in
+
+JavaScript
+
+^ may be used to indicate the beginning of a string $ for the end
+
+JavaScript   // Matches "Isn't JavaScript great?" 
+^JavaScript  // Matches "JavaScript rules!", 
+             //  not "What is JavaScript?" 
+JavaScript$  // Matches "I love JavaScript",
+             //  not "JavaScript is great!" 
+^JavaScript$ // Matches "JavaScript", and nothing else
+
+\ before any special code syntax
+
+\$\$\$      // Matches "Show me the $$$!"
+
+[] any set of characters 
+
+[12345]     // Matches "1" and "3", but not "a" or "12"
+
+Ranges of numbers and letters may also be specified.
+
+[1-5]       // Same as the previous example 
+[a-z]       // Matches any lowercase letter (from the English alphabet)
+[0-9a-zA-Z] // Matches any letter or digit
+
+^ in [] means anything except
+
+? optional of prev character
+
++ one or more of prev character
+
+* zero or more of prev character
+
+bana?na     // Matches "banana" and "banna", 
+            // but not "banaana". 
+bana+na     // Matches "banana" and "banaana", 
+            // but not "banna". 
+bana*na     // Matches "banna", "banana", and "banaaana", 
+            // but not "bnana". 
+^[a-zA-Z]+$ // Matches any string of one or more 
+            // letters and nothing else.
+
+parenthesis may be used to group strings together to apply ?, +, or * to them
+
+ba(na)+na   // Matches "banana" and "banananana", 
+            // but not "bana" or "banaana".
+
+
+Parenthesis aloso let you define several strings that may match using the pipe character to seperate them
+
+^(ba|na)+$  // Matches "banana", "nababa", "baba",
+            // "nana", "ba", "na", and others.
+
+.       // Any character except a newline 
+\n      // A newline character 
+\r      // A carriage return character 
+\t      // A tab character 
+\b      // A word boundary (the start or end of a word) 
+\B      // Anything but a word boundary 
+\d      // Any digit (same as [0-9]) 
+\D      // Anything but a digit (same as [^0-9]) 
+\s      // Single whitespace (space, tab, newline, etc.) 
+\S      // Single nonwhitespace 
+\w      // A "word character" (same as [A-Za-z0-9_]) 
+\W      // A "nonword character" (same as [^A-Za-z0-9_])
+
+var myRE = /regexp/;
+
+
+Similarly, here’s how to create the last example:
+
+var myRE = /^(ba|na)+$/li;
+
+
+
+g is for global i is for ignore case
+
+
+"test1 Test2 TEST3" they would match:
+
+RegExp	        Match(es):
+/Test[0-9]+/	“Test2” only
+/Test[0-9]+/i	“test1” only
+/Test[0-9]+/gi	“test1”, “Test2”, and “TEST3”
+
+for js  we got fancy tools for regex like:
+
+match() returns array of matching string found in the queried string
+replace()
+search()
+
+
