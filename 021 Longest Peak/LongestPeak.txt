@@ -1,0 +1,8 @@
+ Write a function that takes an array of intergers and returns the length of the longest peak in the array. Strictly increasing and then strictly decreasing.
+
+Sample Input:
+
+array = [1,2,3,4,0,10,6,5,-1,-3,2,3]
+
+Sample Output:
+6 // 0,10,6,5,-1,3 
