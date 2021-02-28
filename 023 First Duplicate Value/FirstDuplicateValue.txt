@@ -1,0 +1,14 @@
+Given an array of intergers between 1 and n where n is the length of the array, write a function that returns the first integer that appears more than once (when array is read from left to right).
+
+Out of all the integers that might occur more than once in the input array, your function should return the one whose first duplicate value has the minimum index.
+
+If no interger appears more tha once, your function should return a -1.
+
+note that you're allowed to mutate the input array.
+
+Sample Input #1
+
+array = [2,1,5,2,3,3,4]
+
+output = 2 // 2 is the first interger that appears more than once. 
+// 3 also appears more than once, but the second 3 appears after the second 2. 
