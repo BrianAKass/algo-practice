@@ -1,0 +1,48 @@
+Write a BST class for Binary Search Tree. Class should support:
+ - Inserting values with an INSERT method
+ - Removing values with the REMOVE method; should only remove the first instance of a given value.
+ - Searching for values with the CONTAINS method.
+
+Note that you cant remove value from a single-node tree. In other words, calling the remove method on a single-node tree should simply not do anything. 
+
+Each BST node has an interger value, a left child node and a right child node. A node is said to be a valid BST node if and only if it satisfies the BST property: it's value is strictly greater than the values of every node to its left; its value is less than or equal to the values of every node to its right and its children nodes are either valid BST nodes themselves or none/null.
+
+
+EXAMPLE:
+
+         10
+       /     \
+      5      15
+    /   \   /   \
+   2     5 13   22
+ /           \
+1            14
+
+
+
+
+ADDING 12:
+
+         10
+       /     \
+      5      15
+    /   \   /   \
+   2     5 13   22
+ /        /  \
+1        12   14
+
+
+
+
+REMOVING 10:
+
+        12
+      /     \
+     5      15
+   /   \   /   \
+  2     5 13   22
+ /           \
+1            14
+
+CONTAINS 15:
+true
