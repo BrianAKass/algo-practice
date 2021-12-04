@@ -9,23 +9,23 @@ function knapsackProblem(items, maxWeight) {
 	// traverse the array
 	for (let i = 1; i< items.length + 1; i++) {
 		// start with i - 1 since i = 1 because of empty additional row
-		const currmaxWeight = items[i - 1][1];
+		const currWeight = items[i - 1][1];
 		const currVal = items[i - 1][0];
 		for(let c = 0; c < maxWeight + 1; c++){
-			if (currmaxWeight > c) {
+			if (currWeight > c) {
 				grid[i][c] = grid[i - 1][c];
 			} else {
 				grid[i][c] = Math.max(
 					grid[i - 1][c],
-					grid[i - 1][c - currmaxWeight] + currVal
+					grid[i - 1][c - currWeight] + currVal
 				);
 			}
 		}
 	}
-	return [grid[items.length][maxWeight], getKnapsackItems(grid,items)];
+	return [grid[items.length][maxWeight], getItems(grid,items)];
 }
 
-function getKnapsackItems(grid,items) {
+function getItems(grid,items) {
 	const sequence = [];
 	let i = grid.length - 1;
 	let c = grid[0].length - 1;
