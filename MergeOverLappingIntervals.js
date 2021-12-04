@@ -31,3 +31,5 @@ function mergeOverlappingIntervals(array) {
   }
   return merged;
 }
+
+
