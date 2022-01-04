@@ -1,0 +1,54 @@
+// O(v^2 + e) time | O(V) space where v is the number of
+// verticies and e is the number of edges in the input graph
+function dijkstrasAlgorithm(start, edges) {
+  const numVerts = edges.length;
+	const minDists = [];
+	
+	for (let i =0; i < numVerts; i++){ // assign all distances to infinity
+		minDists.push(Infinity);
+	}
+	minDists[start] = 0;
+	
+	const visited = new Set();
+	
+	while (visited.size != numVerts) {
+		const [vertex, currMinDist] = getVertexWithMinDistance(minDists, visited);
+		
+		if (currMinDist === Infinity){
+			break;
+		}
+		
+		visited.add(vertex);
+		
+		for (const edge of edges[vertex]) {
+			const [destination, distanceToDestination] = edge;
+			if (visited.has(destination)) {
+				continue;
+			}
+			const newPathDist = currMinDist + distanceToDestination;
+			const currDestDist = minDists[destination];
+			
+			if(newPathDist < currDestDist) {
+				minDists[destination] = newPathDist;
+			}
+		}
+	}
+	return minDists.map(x => (x=== Infinity ? -1 : x));
+}
+		
+function getVertexWithMinDistance(dists, visited){
+	let currMinDist = Infinity;
+	let vertex = -1;
+			
+	for (const [vertIdx, distance] of dists.entries()) {
+		if (visited.has(vertIdx)) {
+			continue;
+		}
+		if (distance <= currMinDist) {
+			vertex = vertIdx;
+			currMinDist = distance;
+		}
+	}
+			
+	return [vertex, currMinDist]
+}
