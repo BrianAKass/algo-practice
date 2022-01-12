@@ -1,0 +1,50 @@
+//ASK IF NODES ARE UNIQUE AND IF THER ARE TO BE ANY DUPLICATES
+// IMPORTANT TO ASK FOR THE SAKE OF EDGE CASES
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+// O(d) time and O(1) space where d is the distance between nodes one and three
+function validateThreeNodes(nodeOne, nodeTwo, nodeThree) {
+  let searchOne = nodeOne;
+	let searchTwo = nodeThree;
+	
+	while(true){
+		const foundThreeFromOne = searchOne === nodeThree;
+		const foundOneFromThree = searchTwo === nodeOne;
+		const foundNodeTwo = searchOne === nodeTwo || searchTwo === nodeTwo;
+		const finishedSearching = searchOne === null && searchTwo === null;
+		// IMPORTANT PART OF WHILE LOOP
+		if (foundThreeFromOne || foundOneFromThree || foundNodeTwo || finishedSearching){
+			break;
+		}
+		// change searchOne to it's left or right node based on nodeTwo.values
+		if ( searchOne !== null) {
+			searchOne = searchOne.value > nodeTwo.value ? searchOne.left : searchOne.right;
+		}
+		// same idea for seachTwo. you got this
+		if(searchTwo !== null){
+			searchTwo = searchTwo.value > nodeTwo.value ? searchTwo.left : searchTwo.right;
+		}
+	}
+	
+	const foundNodeFromOther = searchOne === nodeThree || searchTwo === nodeOne;
+	const foundNodeTwo = searchOne === nodeTwo || searchTwo === nodeTwo;
+	
+	if (!foundNodeTwo || foundNodeFromOther) return false;
+	// If the nodes haven't found each other, have it run a helper function
+	// which will go through a depth first search for the target and will
+	// return true when it finds it.
+	return searchForTarget(nodeTwo,searchOne === nodeTwo ? nodeThree : nodeOne)
+}
+
+function searchForTarget(node, target) {
+	while (node !== null && node !== target) {
+		node = target.value < node.value ? node.left : node.right;
+	}
+	
+	return node === target;
+}
