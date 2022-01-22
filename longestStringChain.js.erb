@@ -1,0 +1,57 @@
+// O(n*m^2 + nlog(n)) time | O(nm) space
+// n = num of strings | m = longest string length
+function longestStringChain(strings) {
+  const stringChains = {};
+	for (const string of strings) {
+		// nextString acts as a pointer for later, maxChainLengh helps with comparrisons
+		stringChains[string] = {nextString: '', maxChainLength: 1};
+	}
+	// sort smallest to largest (will pay off later saving us computation time)
+	const sortedStrings = strings.sort((a,b) => a.length - b.length);
+	for (const string of sortedStrings) {
+		findLongestStringChain(string, stringChains);
+	}
+	return buildLongestStringChain(strings, stringChains);
+}
+
+function findLongestStringChain(string, stringChains) {
+	for(let i = 0; i < string.length; i++) {
+		const smallerString = getSmallerString(string, i);
+		if (!(smallerString in stringChains)) continue;
+		tryUpdateLongestStringChain(string, smallerString, stringChains);
+	}
+}
+//string combos happen here  
+function getSmallerString(string, index) {
+	return string.slice(0, index) + string.slice(index + 1);
+}
+
+function tryUpdateLongestStringChain(currentString, smallerString, stringChains) {
+	const smallerStringChainLength = stringChains[smallerString].maxChainLength;
+	const currentStringChainLength = stringChains[currentString].maxChainLength;
+	// only updates if smaller string leads to longer chain
+	if (smallerStringChainLength + 1 > currentStringChainLength) {
+		stringChains[currentString].maxChainLength = smallerStringChainLength + 1;
+		stringChains[currentString].nextString = smallerString;
+	}
+}
+
+function buildLongestStringChain(strings, stringChains) {
+	//find string starting with longest chain string
+	let maxChainLength = 0;
+	let chainStartingString = '';
+	for (const string of strings) {
+		if (stringChains[string].maxChainLength > maxChainLength) {
+			maxChainLength = stringChains[string].maxChainLength;
+			chainStartingString = string; 
+		}
+	}
+	// build array with starting longest found
+	const ourLongestStringChain = [];
+	let currentString = chainStartingString;
+	while (currentString !== '') {
+		ourLongestStringChain.push(currentString);
+		currentString = stringChains[currentString].nextString;
+	}
+	return ourLongestStringChain.length === 1 ? [] : ourLongestStringChain;
+}
