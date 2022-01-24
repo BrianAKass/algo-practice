@@ -1,0 +1,48 @@
+// O(n^3) time | O(n^2) space 
+function detectArbitrage(exchangeRates) {
+  // to use Exchange Rates as edge weights, we must be able to add them.
+	// since log(ab) = log(a) + log(b) we can convert all rates to -log10(rate)
+	// to use them as edge weights
+	const logExchangeRates = convertToLogMatrix(exchangeRates);
+  return foundNegativeWeightCycle(logExchangeRates, 0);
+}
+
+// Ballman Ford Algo
+function foundNegativeWeightCycle(graph, start) {
+	const distancesFromStart = new Array(graph.length).fill(Infinity);
+	distancesFromStart[start] = 0;
+	
+	for (let index = 0; index < graph.length - 1; index++) {
+		// no update, no negative cycle
+		if (!relaxEdgesAndUpdateDistances(graph, distancesFromStart)) return false;
+	}
+	return relaxEdgesAndUpdateDistances(graph, distancesFromStart);
+}
+//returns 'true' if any distance is updated
+function relaxEdgesAndUpdateDistances(graph, distances) {
+	let updated = false;
+	for (let sourceIndex = 0; sourceIndex < graph.length; sourceIndex++) {
+		const edges = graph[sourceIndex];
+		for (let destinationIndex = 0; destinationIndex < edges.length; destinationIndex++) {
+			const edgeWeight = edges[destinationIndex];
+			const newDistanceToDestination = distances[sourceIndex] + edgeWeight;
+			if (newDistanceToDestination < distances[destinationIndex]) {
+				updated = true;
+				distances[destinationIndex] = newDistanceToDestination;
+			}
+		}
+	}
+	return updated;
+}
+
+function convertToLogMatrix(matrix) {
+  const newMatrix = [];
+  for (let row = 0; row < matrix.length; row++) {
+    const rates = matrix[row];
+    newMatrix.push([]);
+    for (const rate of rates) {
+      newMatrix[row].push(-Math.log10(rate));
+    }
+  }
+  return newMatrix;
+}
