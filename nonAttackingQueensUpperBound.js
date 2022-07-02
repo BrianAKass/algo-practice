@@ -26,5 +26,5 @@ function placementOkay(row, col, colPlacements) {
 		const onDiagonal = Math.abs(checkCol - col) === row - prevRow;
 		if (sameCol || onDiagonal) return false;
 	}
-	return true;
+	return true;-
 }
